@@ -1,0 +1,28 @@
+@if (movie) {
+  <div style="display: flex; flex-direction: column; gap: 15px;">
+    <h2 style="color: #1a365d; font-size: 1.5rem; margin: 0;">{{ movie.title }}</h2>
+    
+    <p style="margin: 0; color: #495057; font-size: 0.95rem;">
+      <strong>Calificación:</strong> ⭐ {{ movie.vote_average }} / 10
+    </p>
+    
+    <p style="margin: 0; color: #495057; font-size: 0.95rem;">
+      <strong>Fecha de estreno:</strong> {{ movie.release_date }}
+    </p>
+    
+    <div>
+      <strong style="color: #1a365d; display: block; margin-bottom: 5px;">Sinopsis:</strong>
+      <p style="color: #333; line-height: 1.5; margin: 0; font-size: 0.95rem;">
+        {{ movie.overview || 'No hay descripción disponible para esta película.' }}
+      </p>
+    </div>
+
+    @if (movie.poster_path) {
+      <div style="text-align: center; margin-top: 10px;">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" 
+             [alt]="movie.title" 
+             style="max-width: 220px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+      </div>
+    }
+  </div>
+}
